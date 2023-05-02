@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expiration-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: expiration
+  template:
+    metadata:
+      labels:
+        app: expiration
+    spec:
+      containers:
+        - name: expiration
+          image: nitinklr23/expiration
+          env:
+            - name: KAFKA_CLIENT_ID
+              value: ticket-management
+            - name: KAFKA_BROKER_SERVER
+              value: pkc-l7pr2.ap-south-1.aws.confluent.cloud:9092
+            - name: KAFKA_USER_NAME
+              value: TZY72EO6P7QZ6GGP
+            - name: KAFKA_PASSWORD
+              value: iECC14jGPUgiA6dm3t4s4KS+yqWyXFXI8bit/88OjZNc3SzdJ0Qg3IF1CWZEGhdj
+            - name: REDIS_HOST
+              value: expiration-redis-srv
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+

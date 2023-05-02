@@ -1,0 +1,1 @@
+export const orderCreationGroupName = 'order-creation-group';

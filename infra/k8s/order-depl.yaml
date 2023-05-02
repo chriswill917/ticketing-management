@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orders-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orders
+  template:
+    metadata:
+      labels:
+        app: orders
+    spec:
+      containers:
+        - name: orders
+          image: nitinklr23/orders
+          env:
+            - name: KAFKA_CLIENT_ID
+              value: ticket-management
+            - name: KAFKA_BROKER_SERVER
+              value: pkc-l7pr2.ap-south-1.aws.confluent.cloud:9092
+            - name: KAFKA_USER_NAME
+              value: TZY72EO6P7QZ6GGP
+            - name: KAFKA_PASSWORD
+              value: iECC14jGPUgiA6dm3t4s4KS+yqWyXFXI8bit/88OjZNc3SzdJ0Qg3IF1CWZEGhdj
+            - name: MONGO_URI
+              value: 'mongodb://orders-mongo-srv:27017/orders'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orders-srv
+spec:
+  selector:
+    app: orders
+  ports:
+    - name: orders
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
