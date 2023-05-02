@@ -1,18 +1,22 @@
 name: deploy-auth
-'on':
+
+on: 
   push:
-    branches:
+    branches: 
       - main
     paths:
-      - auth/**
+      - 'auth/**'
+      
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: cd auth && docker build -t nitinklr23/auth .
+      - uses: actions/checkout@v2
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASS
-      - env:
-          DOCKER_USERNAME: '${{ secrets.DOCKER_USERNAME }}'
-          DOCKER_PASS: '${{ secrets.DOCKER_PASS }}'
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+      - uses: actions/checkout@v2
       - run: docker push nitinklr23/auth
