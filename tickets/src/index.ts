@@ -26,6 +26,8 @@ const start = async () => {
     throw new Error("KAFKA_USER_NAME must be defined");
   }
 
+  console.log('test... code')
+
   await kafkaWrapper.init(
     process.env.KAFKA_BROKER_SERVER,
     process.env.KAFKA_CLIENT_ID,
@@ -34,6 +36,7 @@ const start = async () => {
   );
 
   try {
+  
     await mongoose.connect(process.env.MONGO_URI);
     const OrderCreatorListener =  new OrderCreatedListener(kafkaWrapper.client);
     OrderCreatorListener.listen();
