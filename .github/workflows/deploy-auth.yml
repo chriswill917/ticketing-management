@@ -17,3 +17,4 @@ jobs:
       - env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+      - run: docker push nitinklr23/auth
