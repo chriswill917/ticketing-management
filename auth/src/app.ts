@@ -22,7 +22,6 @@ app.use(
   })
 );
 
-console.log('nini......')
 app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signupRouter);
