@@ -3,7 +3,7 @@ import { app } from './app'
 
 const start = async() => {
 
-    console.log('Test Docker Deploy....');
+    console.log('Test Docker cc Deploy....');
     if (!process.env.JWT_KEY) {
       throw new Error('JWT_KEY must be defined');
     }
