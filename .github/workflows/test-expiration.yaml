@@ -2,6 +2,8 @@ name: tests-expiration
 
 on:
   pull_request
+    path:
+      - 'expiration/**'
   
 jobs: 
   build:
