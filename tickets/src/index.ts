@@ -26,8 +26,6 @@ const start = async () => {
     throw new Error("KAFKA_USER_NAME must be defined");
   }
 
-  console.log('test..ss. code')
-
   await kafkaWrapper.init(
     process.env.KAFKA_BROKER_SERVER,
     process.env.KAFKA_CLIENT_ID,

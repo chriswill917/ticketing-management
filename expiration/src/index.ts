@@ -33,6 +33,7 @@ const start = async () => {
     const OrderCreatorListener =  new OrderCreatedListener(kafkaWrapper.client);
     OrderCreatorListener.listen();
   } catch (err) {
+  
     console.error(err);
   }
 };
