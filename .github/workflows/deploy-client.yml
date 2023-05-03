@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd client && docker build -t nitinklr23/client .
+      - run: cd client && docker build -t nitinklr23/ticketing-client .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASS
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
-      - run: docker push nitinklr23/client
+      - run: docker push nitinklr23/ticketing-client
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITAL_OCCEAN_ACCESS_TOKEN }}
