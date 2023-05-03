@@ -4,7 +4,7 @@ const LandingPage = ({ currentUser, tickets }) => {
   const ticketList = tickets.map((ticket) => {
     return (
       <tr key={ticket.id}>
-        <td>{ticket.title}</td>
+        <td>{ticket.title}---</td>
         <td>{ticket.price}</td>
         <td>
           <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`}>

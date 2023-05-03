@@ -10,7 +10,7 @@ const start = async () => {
     throw new Error("KAFKA_CLIENT_ID must be defined");
   }
   if (!process.env.KAFKA_BROKER_SERVER) {
-    throw new Error("KAFKA_BROKER_SERVER must be defined");
+    throw new Error("KAFKA_BROKER_SERVER must be defined   ");
   }
   if (!process.env.KAFKA_USER_NAME) {
     throw new Error("KAFKA_USER_NAME must be defined");
