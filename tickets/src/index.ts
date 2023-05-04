@@ -42,7 +42,7 @@ const start = async () => {
     OrderCreatorListener.listen();
     const OrderCancelListener =  new OrderCancelledListener(kafkaWrapper.client);
     OrderCancelListener.listen();
-    console.log('Connected to MongoDb ----');
+    console.log('Connected to MongoDb -----------');
   } catch (err) {
     console.error(err);
   }
