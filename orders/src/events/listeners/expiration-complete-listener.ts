@@ -13,11 +13,14 @@ export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent
   subject: Subjects.ExpirationComplete = Subjects.ExpirationComplete;
 
   async onMessage(data: any, msg: any) {
-
+   
+  try {
     const d = {
       ...data
     } as any;
     const { orderId } = d.data;
+
+    console.log('r', d)
 
     const order = await Order.findById(orderId).populate("ticket");
 
@@ -36,6 +39,9 @@ export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent
         id: order.ticket.id,
       },
     });
+  } catch(err) {
+    console.log(err);
+  }
 
   }
 }
